@@ -18,6 +18,7 @@ import Math from "./assets/math.svg";
 import Random from "./assets/shuffle.svg";
 import KnowledgeAreaStructure from "./components/KnowledgeAreaStructure";
 import SubjectCard from "./components/SubjectCard";
+import BgTopSection from "./assets/bg-top-section.svg";
 
 function Home() {
   const areas = [
@@ -42,22 +43,6 @@ function Home() {
       icon: Random,
     },
   ];
-  // const subjects = [
-  //   "Matemática",
-  //   "Física",
-  //   "Química",
-  //   "Biologia",
-  //   "História",
-  //   "Geografia",
-  //   "Filosofia",
-  //   "Sociologia",
-  //   "Língua Portuguesa",
-  //   "Literatura",
-  //   "Inglês",
-  //   "Espanhol",
-  //   "Educação Física",
-  //   "Artes",
-  // ];
 
   const subjectAndImages = [
     { subject: "Matemática", icon: Mathematics },
@@ -76,11 +61,19 @@ function Home() {
     { subject: "Artes", icon: Poem },
   ];
 
-  const years = ["2016", "2017", "2018", "2019", "2020", "2021", "2022"];
+  const years = ["2022", "2021", "2020", "2019", "2018", "2017", "2016"];
 
   return (
     <div className="bg-enem-50 h-full flex flex-col items-center">
-      <div className="h-[200px] bg-enem-118ab2 w-[90%] mt-10 mb-6 rounded-lg flex items-center justify-center p-4">
+      <div
+        className="h-[200px] bg-enem-118ab2 w-[90%] mt-10 mb-6 rounded-lg flex items-center justify-center p-4"
+        style={{
+          background: `url(${BgTopSection})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center center",
+        }}
+      >
         <div>
           <img src={Student} alt="" />
         </div>{" "}
