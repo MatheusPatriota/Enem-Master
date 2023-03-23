@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import QuestionBox from "../components/QuestionBox";
+import VideoTutorialModal from "../components/VideoTutorialModal";
 
 function Question() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
   return (
     <>
       <div className="flex flex-col gap-8 p-10">
         <div className="flex gap-4 items-center justify-between">
           <div className=" flex items-center gap-8">
             <div className="text-[30px] font-black">ENEM Master</div>
-            <div className="font-light italic opacity-80">Ciencias ....</div>
+            <div className="font-light italic opacity-80">Ciências ....</div>
           </div>
           <div className=" flex items-center gap-20">
             <div className="flex flex-row gap-4">
@@ -34,12 +44,16 @@ function Question() {
             <QuestionBox question={"A3"} />
             <QuestionBox question={"A4"} />
             <QuestionBox question={"A5"} />
+            {isModalOpen && <VideoTutorialModal onClose={handleModalClose} />}
           </div>
           <div className="mt-6 font-bold p-4 flex justify-center items-center bg-enem-75f9a2 rounded-md cursor-pointer hover:opacity-70">
             Enviar
           </div>
           <div className="mt-6 flex justify-end">
-            <button className="bg-enem-75f9a2 p-4 rounded-full w-32 cursor-pointer hover:opacity-70 font-bold">
+            <button
+              className="bg-enem-75f9a2 p-4 rounded-full w-32 cursor-pointer hover:opacity-70 font-bold"
+              onClick={handleModalOpen}
+            >
               Pular
             </button>
           </div>
