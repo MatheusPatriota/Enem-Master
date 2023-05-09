@@ -1,6 +1,8 @@
-import React from "react";
-import VideoBox from "../VideoBox";
-import Lamp from "../../assets/lamp.svg";
+import React from 'react';
+
+import Lamp from '../../assets/lamp.svg';
+import VideoBox from '../VideoBox';
+
 function VideoTutorialModal(props: any) {
   const handleClose = () => {
     props.onClose();
@@ -29,7 +31,7 @@ function VideoTutorialModal(props: any) {
           </div>
           <div className="flex justify-end mt-4">
             <button
-              className="bg-enem-118ab2 hover:opacity-70 text-white font-bold py-2 px-4 rounded"
+              className="bg-enem-75f9a2 hover:opacity-70 text-black font-bold py-2 px-4 rounded"
               onClick={handleClose}
             >
               Entendi

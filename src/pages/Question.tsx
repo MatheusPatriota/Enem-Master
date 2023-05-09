@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import QuestionBox from "../components/QuestionBox";
 import VideoTutorialModal from "../components/VideoTutorialModal";
+import QuestionErrorModal from "../components/QuestionErrorModal";
+import QuestionCorrectModal from "../components/QuestionCorrectModal";
 
 function Question() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -44,7 +46,9 @@ function Question() {
             <QuestionBox question={"A3"} />
             <QuestionBox question={"A4"} />
             <QuestionBox question={"A5"} />
-            {isModalOpen && <VideoTutorialModal onClose={handleModalClose} />}
+            {/* {isModalOpen && <VideoTutorialModal onClose={handleModalClose} />} */}
+            {isModalOpen && <QuestionCorrectModal onClose={handleModalClose} />}
+            {/* {isModalOpen && <QuestionErrorModal onClose={handleModalClose} />} */}
           </div>
           <div className="mt-6 font-bold p-4 flex justify-center items-center bg-enem-75f9a2 rounded-md cursor-pointer hover:opacity-70">
             Enviar
