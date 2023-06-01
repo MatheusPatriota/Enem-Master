@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 interface SubjectCardProps {
   icon: any;
@@ -7,6 +8,7 @@ interface SubjectCardProps {
 }
 
 function SubjectCard({ title, years, icon }: SubjectCardProps) {
+  const navigate = useNavigate();
   return (
     <>
       <div className="mt-6 mb-6">
@@ -19,6 +21,7 @@ function SubjectCard({ title, years, icon }: SubjectCardProps) {
               <>
                 <div
                   key={index}
+                  onClick={()=> navigate(`/enem/questoes/${year}`)}
                   className="bg-enem-118ab2 p-4 rounded-md flex flex-col min-w-[150px]  min-h-[150px] gap-4 justify-center items-center cursor-pointer hover:opacity-80"
                 >
                   <div>
