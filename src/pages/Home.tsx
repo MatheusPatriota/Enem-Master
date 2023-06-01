@@ -25,22 +25,27 @@ function Home() {
     {
       title: "Ciências Humanas e suas tecnologias",
       icon: Science,
+      link: 'humanas'
     },
     {
       title: "Linguagens, códigos e suas tecnologias",
       icon: Languages,
+      link: 'linguagens'
     },
     {
       title: "Ciências da Natureza e suas tecnologias",
       icon: Nature,
+      link: 'natureza'
     },
     {
       title: "Matemática e suas tecnologias",
       icon: Math,
+      link: 'exatas'
     },
     {
       title: "Aleatório",
       icon: Random,
+      link: 'random'
     },
   ];
 
