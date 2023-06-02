@@ -1,10 +1,13 @@
 import React from "react";
+import { useLocation, useParams } from "react-router-dom";
 
 function Score() {
+  const {score} =  useParams();
   return (
     <>
       <div className="flex flex-col gap-8 p-10 h-screen">
-        <div className="flex gap-4 items-center justify-between">
+        Pontuação: {score}
+        {/* <div className="flex gap-4 items-center justify-between">
           <div className=" flex items-center gap-8">
             <div className="text-[30px] font-black">ENEM Master</div>
           </div>
@@ -20,7 +23,7 @@ function Score() {
           >
             Continuar
           </button>
-        </div>
+        </div> */}
       </div>
     </>
   );

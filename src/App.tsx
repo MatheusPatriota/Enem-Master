@@ -15,7 +15,7 @@ const App: React.FC = () => {
           <Route path=":ano" element={<QuestionsYear />} />
           <Route path="area_conhecimento/:area" element={<KnowledgeArea />} />
           <Route path="area_conhecimento/:area/:ano" element={<Question />} />
-          <Route path="pontuacao" element={<Score />} />
+          <Route path="pontuacao/:score" element={<Score />} />
         </Route>
       </Routes>
     </BrowserRouter>

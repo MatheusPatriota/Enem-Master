@@ -1,8 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 interface QuestionProps {
   question: string;
   value: string;
+  clearAll: boolean;
   name: string;
   onOptionSelected: (value: string) => void;
 }
@@ -11,6 +12,7 @@ function QuestionBox({
   name,
   value,
   question,
+  clearAll,
   onOptionSelected,
 }: QuestionProps) {
   const [isChecked, setIsChecked] = useState(false);
@@ -19,6 +21,10 @@ function QuestionBox({
     setIsChecked(!isChecked);
     onOptionSelected(value); // Chama a função de callback passando o valor da opção selecionada
   };
+
+  useEffect(() => {
+    setIsChecked(false); // Reseta o estado isChecked quando clearAll é true
+  }, [clearAll]);
 
   return (
     <div
