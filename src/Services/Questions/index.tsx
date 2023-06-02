@@ -56,7 +56,7 @@ const GetQuestionsByKnowledgeAreaAndYear = async (
       `/questions/area-ano/${knowledgeArea}/${year}`
     );
     data = JSON.parse(response.data);
-    console.log(data);
+    // console.log(data);
   } catch (error) {
     console.log(error);
     data = error;

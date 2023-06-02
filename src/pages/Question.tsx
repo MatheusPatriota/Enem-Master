@@ -6,11 +6,13 @@ import QuestionBox from "../components/QuestionBox";
 import QuestionCorrectModal from "../components/QuestionCorrectModal";
 import { LoadingContext } from "../Context/LoginContext";
 import { GetQuestionsByKnowledgeAreaAndYear } from "../Services/Questions";
+import Loading from "../components/Loading";
 
 function Question() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { isLoading, startLoading, stopLoading } = useContext(LoadingContext);
   const [questions, setQuestions] = useState([]);
+  const [score, setScore] = useState(0);
   const [selectedOption, setSelectedOption] = useState("");
   const [currentQuestion, setCurrentQuestion] = useState<any>(null); // Definindo null como valor inicial
 
@@ -74,7 +76,7 @@ function Question() {
 
   return (
     <>
-      {isLoading && <div>Carregando...</div>}
+      {isLoading && <Loading/>}
       <div className="flex flex-col gap-8 p-10">
         <div className="flex gap-4 items-center justify-between">
           <div className=" flex items-center gap-8">
@@ -93,11 +95,11 @@ function Question() {
             </div>
             <div className="flex flex-col gap-1">
               <p>Pontuação atual:</p>
-              <p>100</p>
+              <p>{score}</p>
             </div>
           </div>
         </div>
-        {currentQuestion && (
+        {currentQuestion ? (
           <div>
             <div className=" p-4 flex flex-col h-fit flex-wrap bg-enem-d9d9d9 mt-4 mb-4 rounded-md">
               <MarkdownPreview
@@ -143,7 +145,7 @@ function Question() {
               {/* {isModalOpen && <QuestionErrorModal onClose={handleModalClose} />} */}
             </div>
           </div>
-        )}
+        ): <Loading/>}
 
         <div className="mt-6 font-bold p-4 flex justify-center items-center bg-enem-75f9a2 rounded-md cursor-pointer hover:opacity-70">
           Enviar
