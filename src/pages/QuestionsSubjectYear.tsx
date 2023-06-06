@@ -109,20 +109,19 @@ function QuestionsSubjectYear() {
     setSelectedOption("");
   };
 
-  if (questions.length === 0) {
-    return (
-      <>
-        <div className="h-screen w-screen flex flex-col justify-center items-center">
-          Não possuímos dados para esse ANO
-          <p>Vamos redirecionar para pagina anterior</p>
-          <p>404</p>
-        </div>
-      </>
-    );
-  } else {
-    return (
-      <>
-        {isLoading && <Loading />}
+  return (
+    <>
+      {isLoading ? (
+        <Loading />
+      ) : questions.length === 0 ? (
+        <>
+          <div className="h-screen w-screen flex flex-col justify-center items-center">
+            Não possuímos dados para esse ANO
+            <p>Vamos redirecionar para pagina anterior</p>
+            <p>404</p>
+          </div>
+        </>
+      ) : (
         <div className="flex flex-col gap-8 p-10">
           <div className="flex gap-4 items-center justify-between">
             <div className=" flex items-center gap-8">
@@ -133,12 +132,12 @@ function QuestionsSubjectYear() {
             </div>
             <div className=" flex items-center gap-20">
               {/* <div className="flex flex-row gap-4">
-                <div>Star</div>
-                <div>
-                  <p>Strikes</p>
-                  <p>1.0</p>
-                </div>
-              </div> */}
+              <div>Star</div>
+              <div>
+                <p>Strikes</p>
+                <p>1.0</p>
+              </div>
+            </div> */}
               <div className="flex flex-col gap-1">
                 <p>Pontuação atual:</p>
                 <p className="font-bold text-[26px]">{score}</p>
@@ -219,9 +218,10 @@ function QuestionsSubjectYear() {
             </div>
           )}
         </div>
-      </>
-    );
-  }
+      )}
+    </>
+  );
 }
+
 
 export default QuestionsSubjectYear;

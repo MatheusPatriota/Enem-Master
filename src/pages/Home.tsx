@@ -86,9 +86,9 @@ function Home() {
           <p>
             Conquiste sua nota <span className="text-[#08c3a4]">1000</span>
           </p>
-          <button className="bg-white text-black p-2 rounded-full text-sm mt-2 shadow-lg shadow-black hover:opacity-80">
+          {/* <button className="bg-white text-black p-2 rounded-full text-sm mt-2 shadow-lg shadow-black hover:opacity-80">
             Comece Agora
-          </button>
+          </button> */}
         </div>
       </div>
       <div className="w-[90%]">
