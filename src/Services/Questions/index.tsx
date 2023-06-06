@@ -66,18 +66,23 @@ const GetQuestionsByKnowledgeAreaAndYear = async (
   return data;
 };
 
-const GetQuestionsBySubject = async (subject: string) => {
+const GetQuestionsBySubjectYear = async (
+  subject: string| undefined,
+  year: number | undefined,
+  loadingContext: any
+) => {
+  const { startLoading, stopLoading } = loadingContext;
   let data;
   try {
-    await EnemInstance.get(`/questions/disciplina/${subject}`).then(
-      (response) => {
-        console.log(response);
-        data = response;
-      }
-    );
+    startLoading();
+    const response = await EnemInstance.get(`/questions/disciplina-ano/${subject}/${year}`) 
+    data = JSON.parse(response.data);
+    // console.log(data);
   } catch (error) {
     console.log(error);
     data = error;
+  } finally {
+    stopLoading();
   }
   return data;
 };
@@ -85,6 +90,6 @@ const GetQuestionsBySubject = async (subject: string) => {
 export {
   GetQuestionsByYear,
   GetQuestionsByKnowledgeArea,
-  GetQuestionsBySubject,
+  GetQuestionsBySubjectYear,
   GetQuestionsByKnowledgeAreaAndYear,
 };

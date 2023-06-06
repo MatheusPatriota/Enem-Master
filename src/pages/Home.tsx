@@ -50,20 +50,20 @@ function Home() {
   ];
 
   const subjectAndImages = [
-    { subject: "Matemática", icon: Mathematics },
-    { subject: "Física", icon: Physic },
-    { subject: "Química", icon: Chemistry },
-    { subject: "Biologia", icon: Biology },
-    { subject: "História", icon: Poem },
-    { subject: "Geografia", icon: Geography },
-    { subject: "Filosofia", icon: Philosophy },
-    { subject: "Sociologia", icon: Sociology },
-    { subject: "Língua Portuguesa", icon: Portuguese },
-    { subject: "Literatura", icon: Poem },
-    { subject: "Inglês", icon: English },
-    { subject: "Espanhol", icon: Spanish },
-    { subject: "Educação Física", icon: Poem },
-    { subject: "Artes", icon: Poem },
+    { subject: "Matemática", icon: Mathematics, link: 'matematica' },
+    { subject: "Física", icon: Physic, link: 'fisica' },
+    { subject: "Química", icon: Chemistry, link: 'quimica' },
+    { subject: "Biologia", icon: Biology, link: 'biologia' },
+    { subject: "História", icon: Poem, link: 'historia' },
+    { subject: "Geografia", icon: Geography, link: 'geografia' },
+    { subject: "Filosofia", icon: Philosophy,   link: 'filosofia' },
+    { subject: "Sociologia", icon: Sociology, link: 'sociologia' },
+    { subject: "Língua Portuguesa", icon: Portuguese, link: 'portugues' },
+    { subject: "Literatura", icon: Poem, link: 'literatura' },
+    { subject: "Inglês", icon: English, link: 'ingles' },
+    { subject: "Espanhol", icon: Spanish, link: 'espanhol' },
+    { subject: "Educação Física", icon: Poem, link: 'ed_fisica' },
+    { subject: "Artes", icon: Poem, link: 'artes' },
   ];
 
   const years = ["2022", "2021", "2020", "2019", "2018", "2017", "2016"];
@@ -99,11 +99,12 @@ function Home() {
           />
         </div>
         <div>
-          {subjectAndImages.map(({ subject, icon }, index) => {
+          {subjectAndImages.map(({ subject, icon, link }, index) => {
             return (
               <SubjectCard
                 title={subject}
                 icon={icon}
+                link={link}
                 key={`${subject} - ${index}`}
                 years={years}
               />

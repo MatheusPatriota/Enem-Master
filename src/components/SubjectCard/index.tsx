@@ -5,9 +5,11 @@ interface SubjectCardProps {
   icon: any;
   title: string;
   years: string[];
+  link: string;
 }
 
-function SubjectCard({ title, years, icon }: SubjectCardProps) {
+function SubjectCard({ title, years, icon, link }: SubjectCardProps) {
+
   const navigate = useNavigate();
   return (
     <>
@@ -21,7 +23,7 @@ function SubjectCard({ title, years, icon }: SubjectCardProps) {
               <>
                 <div
                   key={index}
-                  onClick={()=> navigate(`/enem/questoes/${year}`)}
+                  onClick={()=> navigate(`/enem/questoes/${link}/${year}`)}
                   className="bg-enem-118ab2 p-4 rounded-md flex flex-col min-w-[150px]  min-h-[150px] gap-4 justify-center items-center cursor-pointer hover:opacity-80"
                 >
                   <div>
