@@ -21,7 +21,13 @@ function KnowledgeAreaStructure({ title, areas }: KnowledgeAreaStructureProps) {
           return (
             <div
               key={index}
-              onClick={() => {navigate(`enem/questoes/area_conhecimento/${link}`)}}
+              onClick={() => {
+                if (link === "random") {
+                  navigate(`enem/questoes/random`);
+                } else {
+                  navigate(`enem/questoes/area_conhecimento/${link}`);
+                }
+              }}
               className="bg-enem-118ab2 p-4 rounded-md flex flex-col justify-center items-center cursor-pointer hover:opacity-80"
             >
               <img src={icon} alt={`ícone do ${title}`} />

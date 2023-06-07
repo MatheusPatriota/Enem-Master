@@ -25,45 +25,45 @@ function Home() {
     {
       title: "Ciências Humanas e suas tecnologias",
       icon: Science,
-      link: 'humanas'
+      link: "humanas",
     },
     {
       title: "Linguagens, códigos e suas tecnologias",
       icon: Languages,
-      link: 'linguagens'
+      link: "linguagens",
     },
     {
       title: "Ciências da Natureza e suas tecnologias",
       icon: Nature,
-      link: 'natureza'
+      link: "natureza",
     },
     {
       title: "Matemática e suas tecnologias",
       icon: Math,
-      link: 'exatas'
+      link: "exatas",
     },
     {
       title: "Aleatório",
       icon: Random,
-      link: 'random'
+      link: "random",
     },
   ];
 
   const subjectAndImages = [
-    { subject: "Matemática", icon: Mathematics, link: 'matematica' },
-    { subject: "Física", icon: Physic, link: 'fisica' },
-    { subject: "Química", icon: Chemistry, link: 'quimica' },
-    { subject: "Biologia", icon: Biology, link: 'biologia' },
-    { subject: "História", icon: Poem, link: 'historia' },
-    { subject: "Geografia", icon: Geography, link: 'geografia' },
-    { subject: "Filosofia", icon: Philosophy,   link: 'filosofia' },
-    { subject: "Sociologia", icon: Sociology, link: 'sociologia' },
-    { subject: "Língua Portuguesa", icon: Portuguese, link: 'portugues' },
-    { subject: "Literatura", icon: Poem, link: 'literatura' },
-    { subject: "Inglês", icon: English, link: 'ingles' },
-    { subject: "Espanhol", icon: Spanish, link: 'espanhol' },
-    { subject: "Educação Física", icon: Poem, link: 'ed_fisica' },
-    { subject: "Artes", icon: Poem, link: 'artes' },
+    { subject: "Matemática", icon: Mathematics, link: "matematica" },
+    { subject: "Física", icon: Physic, link: "fisica" },
+    { subject: "Química", icon: Chemistry, link: "quimica" },
+    { subject: "Biologia", icon: Biology, link: "biologia" },
+    { subject: "História", icon: Poem, link: "historia" },
+    { subject: "Geografia", icon: Geography, link: "geografia" },
+    { subject: "Filosofia", icon: Philosophy, link: "filosofia" },
+    { subject: "Sociologia", icon: Sociology, link: "sociologia" },
+    { subject: "Língua Portuguesa", icon: Portuguese, link: "portugues" },
+    { subject: "Literatura", icon: Poem, link: "literatura" },
+    { subject: "Inglês", icon: English, link: "ingles" },
+    { subject: "Espanhol", icon: Spanish, link: "espanhol" },
+    { subject: "Educação Física", icon: Poem, link: "ed_fisica" },
+    { subject: "Artes", icon: Poem, link: "artes" },
   ];
 
   const years = ["2022", "2021", "2020", "2019", "2018", "2017", "2016"];
@@ -102,10 +102,10 @@ function Home() {
           {subjectAndImages.map(({ subject, icon, link }, index) => {
             return (
               <SubjectCard
+                key={`card ${subject} - ${index} - ${link}`}
                 title={subject}
                 icon={icon}
                 link={link}
-                key={`${subject} - ${index}`}
                 years={years}
               />
             );

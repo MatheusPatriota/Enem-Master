@@ -6,6 +6,7 @@ import Score from "./pages/Score";
 import QuestionsYear from "./pages/QuestionsSubjectYear";
 import KnowledgeArea from "./pages/KnowledgeArea";
 import QuestionsSubjectYear from "./pages/QuestionsSubjectYear";
+import RandomQuestions from "./pages/RandomQuestions";
 
 const App: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const App: React.FC = () => {
       <Routes>
         <Route index path="/" element={<Home />} />
         <Route path="enem/questoes">
+          <Route path="random" element={<RandomQuestions />} />
           <Route path=":subject/:ano" element={<QuestionsSubjectYear />} />
           <Route path="area_conhecimento/:area" element={<KnowledgeArea />} />
           <Route path="area_conhecimento/:area/:ano" element={<Question />} />

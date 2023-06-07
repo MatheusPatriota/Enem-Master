@@ -42,33 +42,25 @@ function Question() {
         stopLoading,
       });
       if (response.length === 0) {
-        console.log("Não há questões para esse assunto e ano");
         // navigate(-1);
         setTimeout(() => {
           return navigate(-1);
         }, 3000);
       } else {
-        console.log("há questões para esse assunto e ano");
-
         setQuestions(response);
         setCurrentQuestion(response[0]); // Definindo o valor da primeira questão como currentQuestion
-        console.log("data", response);
       }
     };
     getAllQuestions();
   }, []);
 
   const handleOptionSelected = (value: any) => {
-    console.log("Opção selecionada:", value);
     setSelectedOption(value);
     // Faça o que for necessário com o valor da opção selecionada
   };
 
   function verifyResponse(userResponse: string) {
-    console.log("Resposta do usuário: " + userResponse);
-    console.log("question: " + currentQuestion.alternativa_correta);
     if (userResponse === currentQuestion.alternativa_correta) {
-      console.log("acertou");
       setScore((previousScore) => previousScore + 100);
       removeQuestionFromList();
       if (questions.length === 0) {
@@ -83,7 +75,6 @@ function Question() {
         navigate(`../pontuacao/${score}`);
       } else {
         handleClearAll();
-        console.log("errou", questions.length);
         nextQuestion();
       }
     }
@@ -92,6 +83,9 @@ function Question() {
   function removeQuestionFromList() {
     handleClearAll();
     questions.splice(currentIndex, 1);
+    setCurrentIndex((previousIndex) => {
+      return previousIndex - 1;
+    });
   }
 
   function nextQuestion() {
@@ -100,9 +94,7 @@ function Question() {
     setCurrentQuestion(questions[currentIndex]);
   }
 
-  function exibirPontuacaoFinal() {
-    console.log("Pontuação final: " + score);
-  }
+  function exibirPontuacaoFinal() {}
 
   const handleClearAll = () => {
     setClearAll(!clearAll);
@@ -116,7 +108,7 @@ function Question() {
       ) : questions.length === 0 ? (
         <>
           <div className="h-screen w-screen flex flex-col justify-center items-center">
-            Não possuímos dados para esse ANO
+            <p>Não possuímos dados para esse ANO</p>
             <p>Vamos redirecionar para pagina anterior</p>
             <p>404</p>
           </div>

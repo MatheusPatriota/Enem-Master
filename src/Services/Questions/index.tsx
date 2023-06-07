@@ -11,9 +11,7 @@ const GetQuestionsByYear = async (
     startLoading();
     const response = await EnemInstance.get(`/questions/ano/${year}`);
     data = JSON.parse(response.data);
-    console.log(data);
   } catch (error) {
-    console.log(error);
     data = error;
   } finally {
     stopLoading();
@@ -33,9 +31,7 @@ const GetQuestionsByKnowledgeArea = async (
       `/questions/area_conhecimento/${knowledgeArea}`
     );
     data = JSON.parse(response.data);
-    console.log(data);
   } catch (error) {
-    console.log(error);
     data = error;
   } finally {
     stopLoading();
@@ -56,9 +52,7 @@ const GetQuestionsByKnowledgeAreaAndYear = async (
       `/questions/area-ano/${knowledgeArea}/${year}`
     );
     data = JSON.parse(response.data);
-    // console.log(data);
   } catch (error) {
-    console.log(error);
     data = error;
   } finally {
     stopLoading();
@@ -67,7 +61,7 @@ const GetQuestionsByKnowledgeAreaAndYear = async (
 };
 
 const GetQuestionsBySubjectYear = async (
-  subject: string| undefined,
+  subject: string | undefined,
   year: number | undefined,
   loadingContext: any
 ) => {
@@ -75,11 +69,25 @@ const GetQuestionsBySubjectYear = async (
   let data;
   try {
     startLoading();
-    const response = await EnemInstance.get(`/questions/disciplina-ano/${subject}/${year}`) 
+    const response = await EnemInstance.get(
+      `/questions/disciplina-ano/${subject}/${year}`
+    );
     data = JSON.parse(response.data);
-    // console.log(data);
   } catch (error) {
-    console.log(error);
+    data = error;
+  } finally {
+    stopLoading();
+  }
+  return data;
+};
+const GetRandomQuestions = async (loadingContext: any) => {
+  const { startLoading, stopLoading } = loadingContext;
+  let data;
+  try {
+    startLoading();
+    const response = await EnemInstance.get(`/questions/random`);
+    data = JSON.parse(response.data);
+  } catch (error) {
     data = error;
   } finally {
     stopLoading();
@@ -92,4 +100,5 @@ export {
   GetQuestionsByKnowledgeArea,
   GetQuestionsBySubjectYear,
   GetQuestionsByKnowledgeAreaAndYear,
+  GetRandomQuestions,
 };

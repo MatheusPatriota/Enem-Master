@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import MarkdownPreview from "@uiw/react-markdown-preview";
 
 interface QuestionProps {
   question: string;
@@ -39,7 +40,12 @@ function QuestionBox({
         onChange={() => {}}
         className="scale-150"
       />
-      <p className="ml-4">{question}</p>
+      {/* <p className="ml-4"> */}
+        <MarkdownPreview
+          source={question}
+          className="!bg-transparent	!text-black"
+        />
+      {/* </p> */}
     </div>
   );
 }

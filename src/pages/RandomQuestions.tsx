@@ -1,14 +1,14 @@
-import MarkdownPreview from "@uiw/react-markdown-preview";
-import React, { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import MarkdownPreview from '@uiw/react-markdown-preview';
+import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import QuestionBox from "../components/QuestionBox";
-import QuestionCorrectModal from "../components/QuestionCorrectModal";
-import { LoadingContext } from "../Context/LoginContext";
-import { GetQuestionsBySubjectYear } from "../Services/Questions";
-import Loading from "../components/Loading";
+import Loading from '../components/Loading';
+import QuestionBox from '../components/QuestionBox';
+import QuestionCorrectModal from '../components/QuestionCorrectModal';
+import { LoadingContext } from '../Context/LoginContext';
+import { GetRandomQuestions } from '../Services/Questions';
 
-function QuestionsSubjectYear() {
+function RandomQuestions() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { isLoading, startLoading, stopLoading } = useContext(LoadingContext);
   const [questions, setQuestions] = useState([]);
@@ -37,7 +37,7 @@ function QuestionsSubjectYear() {
 
   useEffect(() => {
     const getAllQuestions = async () => {
-      const response: any = await GetQuestionsBySubjectYear(subject, intAno, {
+      const response: any = await GetRandomQuestions({
         startLoading,
         stopLoading,
       });
@@ -51,7 +51,7 @@ function QuestionsSubjectYear() {
         console.log("há questões para esse assunto e ano");
 
         setQuestions(response);
-        setCurrentQuestion(response[0]); // Definindo o valor da primeira questão como currentQuestion
+        setCurrentQuestion(response[currentIndex]); // Definindo o valor da primeira questão como currentQuestion
         console.log("data", response);
       }
     };
@@ -96,11 +96,15 @@ function QuestionsSubjectYear() {
       console.log(previousIndex - 1);
       return previousIndex - 1;
     });
+    console.log("questions: " + questions.length);
   }
 
   function nextQuestion() {
-    setCurrentIndex((previousIndex) => previousIndex + 1);
     handleClearAll();
+    setCurrentIndex((previousIndex) => {
+      console.log(previousIndex + 1);
+      return previousIndex + 1;
+    });
     setCurrentQuestion(questions[currentIndex]);
   }
 
@@ -227,5 +231,4 @@ function QuestionsSubjectYear() {
   );
 }
 
-
-export default QuestionsSubjectYear;
+export default RandomQuestions;
